@@ -1,3 +1,13 @@
-<div class="container"> 
-    To Be Completed
+<div class="container">
+  <form [formGroup]="fooBarQuixForm" (ngSubmit)="submitNumber()" novalidate>
+    <div class="form-group">
+      <label for="inputNumber">Number to convert:</label>
+      <input type="number" class="form-control" id="inputNumber" formControlName="inputNumber" required>
+      <div *ngIf="fooBarQuixForm.controls['inputNumber'].invalid && fooBarQuixForm.controls['inputNumber'].dirty"
+           class="alert alert-danger">
+        <div *ngIf="fooBarQuixForm.controls['inputNumber'].errors.required">Number is required.</div>
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary" [disabled]="fooBarQuixForm.invalid">Convert</button>
+  </form>
 </div>
